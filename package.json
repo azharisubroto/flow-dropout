@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3300",
+    "lint": "eslint src --ext .js,.jsx",
+    "lint:fix": "npm run lint -- --fix",
     "build": "next build",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./.prettierrc",
     "start": "next start"
   },
   "lint-staged": {
