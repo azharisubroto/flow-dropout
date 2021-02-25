@@ -68,16 +68,16 @@ export default function Home() {
     if ('all' == val) {
       setItems(NodeMap)
     } else {
-      let allowed = []
-      allowed.push(val)
+      let criteria = []
+      criteria.push(val)
 
       // Adjust List
       let adjList = NodeMap[val].adjList
 
-      allowed = allowed.concat(adjList)
+      criteria = criteria.concat(adjList)
 
       const filtered = Object.keys(NodeMap)
-        .filter((key) => allowed.includes(key))
+        .filter((key) => criteria.includes(key))
         .reduce((obj, key) => {
           obj[key] = NodeMap[key]
           return obj
