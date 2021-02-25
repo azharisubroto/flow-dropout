@@ -1,0 +1,36 @@
+{
+  "name": "lucht",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@prefresh/next": "^1.4.4",
+    "bootstrap": "^4.6.0",
+    "hybrids": "^4.3.4",
+    "next": "10.0.7",
+    "next-plugin-preact": "^3.0.3",
+    "preact": "^10.5.12",
+    "preact-render-to-string": "^5.1.12",
+    "react": "17.0.1",
+    "react-bootstrap": "^1.5.0",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-react-display-name": "^7.12.1",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "node-sass": "^5.0.0",
+    "prettier": "^2.2.1",
+    "styled-jsx-plugin-sass": "^1.0.0"
+  }
+}
