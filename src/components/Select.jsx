@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
-const Button = ({ children, color, dark, width, height, fontSize, ...other }) => {
+
+const Select = ({ children, color, dark, width, height, fontSize, ...other }) => {
   const clr = color ? color : '#ececec'
   return (
-    <button className={color} {...other}>
+    <select className={color} {...other}>
       {children}
 
       <style jsx>{`
-        button {
+        select {
           width: ${width ? `${width}px` : 'auto'};
           height: ${height ? `${height}px` : 'auto'};
           line-height: ${height ? `${height}px` : '1'};
@@ -28,11 +29,11 @@ const Button = ({ children, color, dark, width, height, fontSize, ...other }) =>
           }
         }
       `}</style>
-    </button>
+    </select>
   )
 }
 
-Button.propTypes = {
+Select.propTypes = {
   children: PropTypes.node,
   color: PropTypes.string,
   dark: PropTypes.bool,
@@ -41,4 +42,4 @@ Button.propTypes = {
   width: PropTypes.number
 }
 
-export default Button
+export default Select
