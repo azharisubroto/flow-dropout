@@ -8,6 +8,7 @@
     "lint": "eslint src --ext .js,.jsx",
     "lint:fix": "npm run lint -- --fix",
     "build": "next build",
+    "export": "next export",
     "start": "next start"
   },
   "lint-staged": {

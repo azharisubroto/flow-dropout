@@ -10,4 +10,4 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3200](http://localhost:3200) with your browser to see the result.
+Open [http://localhost:3300](http://localhost:3300) with your browser to see the result.
