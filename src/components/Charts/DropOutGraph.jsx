@@ -55,7 +55,7 @@ const DropOutGraph = ({ jsonData, height, className, ...other }) => {
             />
 
             {/* Value Diff */}
-            {diff != null && <DiffIndicator increase={parseInt(diff) >= 0} diffValue={diff} />}
+            {diff != null && <DiffIndicator diffValue={parseInt(diff)} />}
           </React.Fragment>
         )
       })}

@@ -11,7 +11,7 @@ const DiffIndicator = ({ diffValue }) => {
     <div className="diff-container">
       <div>
         <IconButton size={50}>
-          {parseInt(diffValue) >= 0 ? <IoArrowUpCircleOutline size={20} /> : <IoArrowDownCircleOutline size={20} />}
+          {parseInt(diffValue) >= 0 ? <IoArrowUpCircleOutline size={25} /> : <IoArrowDownCircleOutline size={25} />}
         </IconButton>
       </div>
 
