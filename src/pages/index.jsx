@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Flow Chart Drop - React Blog Template</title>
+        <title>Flow Chart Drop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
