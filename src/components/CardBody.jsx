@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
 const CardBody = ({ className, children, py, ...other }) => {
   return (
-    <div className={`ra-card-body ${className}`} {...other}>
-      {children}
+    <>
+      <div className={`ra-card-body ${className ? className : ''}`} {...other}>
+        {children}
+      </div>
 
+      {/* Styling */}
       <style jsx>{`
         .ra-card-body {
           padding: 40px;
@@ -12,14 +15,14 @@ const CardBody = ({ className, children, py, ...other }) => {
           ${py ? `padding-bottom: ${py}px;` : ''}
         }
       `}</style>
-    </div>
+    </>
   )
 }
 
 CardBody.propTypes = {
   children: PropTypes.node,
   className: PropTypes.any,
-  py: PropTypes.number
+  py: PropTypes.string
 }
 
 export default CardBody

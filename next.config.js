@@ -22,9 +22,6 @@ const withPreact = (next = {}) =>
   })
 
 module.exports = withPreact({
-  env: {
-    SECRET_KEY: process.env.SECRET_KEY
-  },
   generateEtags: true,
   poweredByHeader: false,
   compress: true,

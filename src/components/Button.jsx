@@ -2,9 +2,10 @@ import PropTypes from 'prop-types'
 const Button = ({ children, color, dark, width, height, fontSize, ...other }) => {
   const clr = color ? color : '#ececec'
   return (
-    <button className={color} {...other}>
-      {children}
-
+    <>
+      <button className={color} {...other}>
+        {children}
+      </button>
       <style jsx>{`
         button {
           width: ${width ? `${width}px` : 'auto'};
@@ -28,7 +29,7 @@ const Button = ({ children, color, dark, width, height, fontSize, ...other }) =>
           }
         }
       `}</style>
-    </button>
+    </>
   )
 }
 

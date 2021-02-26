@@ -2,8 +2,7 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import IconButton from '@/components/IconButton'
 import { MdInfoOutline } from 'react-icons/md'
-import dynamic from 'next/dynamic'
-const ReactTooltip = dynamic(() => import('react-tooltip'))
+import ReactTooltip from 'react-tooltip'
 
 const Card = ({ className, headline, tooltipText, children, ...other }) => {
   const [renderTooltip, setRenderTooltip] = useState(false)
@@ -13,7 +12,7 @@ const Card = ({ className, headline, tooltipText, children, ...other }) => {
   }, [])
 
   return (
-    <div className={`ra-card-header ${className}`} {...other}>
+    <div className={`ra-card-header ${className ? className : ''}`} {...other}>
       {/* Headline and tooltip */}
       <div>
         <div className="d-flex">

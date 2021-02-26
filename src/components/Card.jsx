@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 const Card = ({ children, className, ...other }) => {
   return (
-    <div className={`ra-card ${className}`} {...other}>
-      {children}
-
+    <>
+      <div className={`ra-card ${className ? className : ''}`} {...other}>
+        {children}
+      </div>
       <style jsx>{`
         .ra-card {
           margin: 61px 0 61px;
@@ -12,7 +13,7 @@ const Card = ({ children, className, ...other }) => {
           background-color: #fff;
         }
       `}</style>
-    </div>
+    </>
   )
 }
 

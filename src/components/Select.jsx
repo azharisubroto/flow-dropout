@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 const Select = ({ children, color, dark, width, height, fontSize, ...other }) => {
   const clr = color ? color : '#ececec'
   return (
-    <select className={color} {...other}>
-      {children}
+    <>
+      <select className={color} {...other}>
+        {children}
+      </select>
 
+      {/* Styling */}
       <style jsx>{`
         select {
           width: ${width ? `${width}px` : 'auto'};
@@ -29,7 +32,7 @@ const Select = ({ children, color, dark, width, height, fontSize, ...other }) =>
           }
         }
       `}</style>
-    </select>
+    </>
   )
 }
 

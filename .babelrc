@@ -8,10 +8,20 @@
         }
       }
     ]
-  ]
-  // "env": {
-  //   "test": {
-  //     "plugins": ["transform-dynamic-import", "babel-plugin-dynamic-import-node", "styled-jsx/babel-test"]
-  //   }
-  // }
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "styled-jsx": {
+              "babel-test": true
+            }
+          }
+        ]
+      ],
+      "plugins": ["transform-dynamic-import", "babel-plugin-dynamic-import-node", "styled-jsx/babel-test"]
+    }
+  }
 }

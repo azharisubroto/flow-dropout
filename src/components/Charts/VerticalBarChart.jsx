@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
-const ReactTooltip = dynamic(() => import('react-tooltip'))
+import ReactTooltip from 'react-tooltip'
 
 const VerticalBarChart = ({ background, label, barValue, item, type, adjList }) => {
   const [renderTooltip, setRenderTooltip] = useState(false)

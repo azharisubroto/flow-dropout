@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 const IconButton = ({ className, children, size, ...other }) => {
   return (
-    <button className={`icon-button ${className ? className : ''}`} {...other}>
-      {children}
+    <>
+      <button className={`icon-button ${className ? className : ''}`} {...other}>
+        {children}
+      </button>
       <style jsx>{`
         button {
           width: ${size ? size : 20}px;
@@ -20,7 +22,7 @@ const IconButton = ({ className, children, size, ...other }) => {
           justify-content: center;
         }
       `}</style>
-    </button>
+    </>
   )
 }
 
