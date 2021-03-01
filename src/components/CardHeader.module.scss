@@ -1,0 +1,24 @@
+.CardHeader {
+  border-bottom: solid 1px #ecf2ff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.d-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.headline {
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #323a44;
+}
+.icon {
+  margin-left: 10px;
+}

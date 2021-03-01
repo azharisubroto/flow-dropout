@@ -1,25 +1,23 @@
 import PropTypes from 'prop-types'
+import styles from './Card.module.scss'
+
 const Card = ({ children, className, ...other }) => {
+  let classes = styles.Card
+  if (className) {
+    classes += ` ${className}`
+  }
   return (
     <>
-      <div className={`ra-card ${className ? className : ''}`} {...other}>
+      <div className={classes} {...other}>
         {children}
       </div>
-      <style jsx>{`
-        .ra-card {
-          margin: 61px 0 61px;
-          border-radius: 10px;
-          border: solid 1px #ecf2ff;
-          background-color: #fff;
-        }
-      `}</style>
     </>
   )
 }
 
 Card.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.any
+  className: PropTypes.string
 }
 
 export default Card

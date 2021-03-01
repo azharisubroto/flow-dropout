@@ -1,0 +1,19 @@
+.diff-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50px;
+  flex-flow: row wrap;
+}
+
+.break {
+  width: 100%;
+}
+
+.diff {
+  color: #9b9b9b;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  bottom: -10px;
+}

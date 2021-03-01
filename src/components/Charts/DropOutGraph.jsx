@@ -2,6 +2,7 @@ import React from 'react'
 import VerticalBarChart from './VerticalBarChart'
 import DiffIndicator from './DiffIndicator'
 import PropTypes from 'prop-types'
+import styles from './DropOutGraph.module.scss'
 
 /**
  * Render DropOutGraph
@@ -38,8 +39,14 @@ const DropOutGraph = ({ jsonData, height, className, ...other }) => {
     return `${diff != 0 ? diffWithSymbol : 0}`
   }
 
+  // classes
+  let classes = styles.chartcontainer
+  if (className) {
+    classes += ` ${className}`
+  }
+
   return (
-    <div className={`${className ? className + ' ' : ''} chartcontainer`} {...other}>
+    <div className={classes} {...other} style={{ height: `${height ? height : 500}px` }}>
       {/* Object Looping */}
       {Object.entries(items).map(([item, val], i) => {
         const diff = getDiff(item, val.value)
@@ -59,27 +66,6 @@ const DropOutGraph = ({ jsonData, height, className, ...other }) => {
           </React.Fragment>
         )
       })}
-
-      <style jsx>{`
-        .chartcontainer {
-          height: ${height ? height : '500'}px;
-          max-width: 100%;
-          display: flex;
-          overflow-x: scroll;
-          overflow-y: hidden;
-          white-space: nowrap;
-          align-items: center;
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-          &::-webkit-scrollbar {
-            width: 0;
-            background: transparent;
-          }
-          &::-webkit-scrollbar-thumb {
-            background: transparent;
-          }
-        }
-      `}</style>
     </div>
   )
 }

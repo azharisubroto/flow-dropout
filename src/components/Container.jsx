@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types'
+import styles from './Container.module.scss'
+
 const Container = ({ children, className, ...other }) => {
+  let classes = styles.Container
+  if (className) {
+    classes += ` ${className}`
+  }
+
   return (
     <>
-      <div className={`container ${className ? className : ''}`} {...other}>
+      <div className={classes} {...other}>
         {children}
       </div>
-      <style jsx>{`
-        .container {
-          max-width: 990px;
-          margin: 0 auto;
-        }
-      `}</style>
     </>
   )
 }

@@ -126,7 +126,7 @@ export default function Home() {
           </CardHeader>
 
           {/* Data */}
-          <CardBody py="0">{NodeMap && <DropOutGraph jsonData={items} height={550} />}</CardBody>
+          <CardBody py={0}>{NodeMap && <DropOutGraph jsonData={items} height={550} />}</CardBody>
         </Card>
       </Container>
       <style jsx>{`
