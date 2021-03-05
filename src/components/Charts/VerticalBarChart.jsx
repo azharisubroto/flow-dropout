@@ -17,13 +17,13 @@ const VerticalBarChart = ({ label, barValue, item, type, adjList }) => {
         style={{
           height: `${barValue ? barValue + '%' : 'auto'}`
         }}
-        data-for={item}
-        data-tip={`Type: ${type}<br/>Branch: ${item}<br/>adjList: ${adjList}`}>
+        data-for={item.id}
+        data-tip={`Type: ${type}<br/>Branch: ${item.id}<br/>adjList: ${adjList}`}>
         <div className={styles['hbc-label']}>{label}</div>
       </div>
 
       {/* Tool Tip */}
-      {renderTooltip && <ReactTooltip id={item} place="top" type="dark" effect="float" multiline={true} />}
+      {renderTooltip && <ReactTooltip id={item.id} place="top" type="dark" effect="float" multiline={true} />}
 
       <div className={styles['hbc-value']}>{barValue}%</div>
     </div>

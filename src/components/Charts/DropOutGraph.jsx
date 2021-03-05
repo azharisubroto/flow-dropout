@@ -16,8 +16,45 @@ import styles from './DropOutGraph.module.scss'
  * )
  */
 const DropOutGraph = ({ jsonData, height, className, ...other }) => {
-  const items = jsonData
+  const [items, setItems] = React.useState([])
   const keys = Object.keys(items).sort()
+
+  React.useEffect(() => {
+    var newData = traverseBFS(jsonData)
+    var newarray = []
+    newData.forEach((el) => {
+      newarray.push(jsonData[el])
+    })
+    // console.log(newarray)
+    setItems(newarray)
+  }, [jsonData])
+
+  // traverseBFS
+  const traverseBFS = (obj) => {
+    let queue = Object.entries(obj).map(([item, val]) => ({ id: item, ...val }))
+
+    let res = []
+    // console.log(JSON.parse(JSON.stringify(queue)))
+    // console.log(queue.length)
+
+    while (queue.length) {
+      let curr = queue.shift()
+      res.push(curr.id)
+
+      if (typeof curr.adjList !== 'undefined' && curr.adjList.length > 0) {
+        curr.adjList.forEach((el) => {
+          var newobj = {
+            id: el,
+            ...obj[[el]]
+          }
+          //console.log(newobj)
+          queue.push(newobj)
+        })
+      }
+    }
+
+    return res
+  }
 
   /**
    * Get Value diff
@@ -48,21 +85,21 @@ const DropOutGraph = ({ jsonData, height, className, ...other }) => {
   return (
     <div className={classes} {...other} style={{ height: `${height ? height : 500}px` }}>
       {/* Object Looping */}
-      {Object.entries(items).map(([item, val], i) => {
-        const diff = getDiff(item, val.value)
+      {/* <pre>{JSON.stringify(items, null, 2)}</pre> */}
+      {items.map((item, i) => {
+        const diff = getDiff(item.id, item.value)
 
         return (
           <React.Fragment key={`bar-${i}`}>
             <VerticalBarChart
-              label={val.label}
+              label={item.label}
               item={item}
-              barValue={val.value}
-              type={val.type}
-              adjList={val.adjList}
+              barValue={item.value}
+              type={item.type}
+              adjList={item.adjList}
             />
 
-            {/* Value Diff */}
-            {diff != null && <DiffIndicator diffValue={parseInt(diff)} />}
+            {diff != null && <DiffIndicator diffValue={diff} />}
           </React.Fragment>
         )
       })}
