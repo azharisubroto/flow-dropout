@@ -8,7 +8,6 @@ import Button from '@/components/Button'
 import Select from '@/components/Select'
 import { IoSettingsOutline } from 'react-icons/io5'
 import DropOutGraph from '@/components/Charts/DropOutGraph'
-import { BreadthFirstSearch } from '@/utils/BFS'
 
 // Node Map Data
 /*
@@ -62,7 +61,6 @@ export default function Home() {
   const [branch, setBranch] = useState('')
   const [dropdown, setDropdown] = useState([])
   const [items, setItems] = useState({})
-  const [src, setSrc] = useState('')
 
   // Restructure Data
   useEffect(() => {
@@ -139,24 +137,7 @@ export default function Home() {
           </CardHeader>
 
           {/* Data */}
-          <CardBody py={30}>
-            <div>
-              <input
-                type="text"
-                val={src}
-                onChange={(e) => {
-                  setSrc(e.target.value)
-                }}
-              />
-            </div>
-            <Button
-              onClick={() => {
-                BreadthFirstSearch(NodeMap, NodeMap.node1, src)
-              }}>
-              Search
-            </Button>
-          </CardBody>
-          <CardBody py={0}>{NodeMap && <DropOutGraph jsonData={items} height={550} />}</CardBody>
+          <CardBody py={0}>{NodeMap && <DropOutGraph rootNode={NodeMap} jsonData={items} height={550} />}</CardBody>
         </Card>
       </Container>
       <style jsx>{`

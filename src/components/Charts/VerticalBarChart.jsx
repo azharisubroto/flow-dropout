@@ -34,7 +34,7 @@ VerticalBarChart.propTypes = {
   adjList: PropTypes.array,
   background: PropTypes.string,
   barValue: PropTypes.number,
-  item: PropTypes.string,
+  item: PropTypes.any,
   label: PropTypes.string,
   type: PropTypes.string
 }

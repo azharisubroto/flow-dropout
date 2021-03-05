@@ -15,18 +15,11 @@ import styles from './DropOutGraph.module.scss'
  *   <DropOutGraph jsonData={json_object} height={450} />
  * )
  */
-const DropOutGraph = ({ jsonData, height, className, ...other }) => {
+const DropOutGraph = ({ rootNode, jsonData, height, className, ...other }) => {
   const [items, setItems] = React.useState([])
-  const keys = Object.keys(items).sort()
 
   React.useEffect(() => {
-    var newData = traverseBFS(jsonData)
-    var newarray = []
-    newData.forEach((el) => {
-      newarray.push(jsonData[el])
-    })
-    // console.log(newarray)
-    setItems(newarray)
+    traverseBFS(jsonData)
   }, [jsonData])
 
   // traverseBFS
@@ -47,24 +40,33 @@ const DropOutGraph = ({ jsonData, height, className, ...other }) => {
             id: el,
             ...obj[[el]]
           }
-          //console.log(newobj)
+          // console.log(newobj)
           queue.push(newobj)
         })
       }
     }
 
-    return res
+    var newarray = []
+    res.forEach((el) => {
+      var newobj = {
+        id: el,
+        ...rootNode[[el]]
+      }
+      newarray.push(newobj)
+    })
+
+    console.log(newarray)
+    setItems(newarray)
   }
 
   /**
    * Get Value diff
-   * @param {String} item - Item name from Object
+   * @param {String} nextIndex - Item name from Object
    * @param {Object} currentVal - Value of an current item
    */
-  const getDiff = (item, currentVal) => {
+  const getDiff = (nextIndex, currentVal) => {
     const prevVal = currentVal
-    const loc = parseInt(keys.indexOf(item) + 1)
-    const nextitem = items[keys[loc]]
+    const nextitem = items[nextIndex]
     const nextVal = nextitem ? nextitem.value : 0
     const diff = parseFloat(Math.abs(prevVal - nextVal).toFixed(2))
     const diffWithSymbol = `${prevVal > nextVal ? '-' : '+'}${diff}`
@@ -86,29 +88,31 @@ const DropOutGraph = ({ jsonData, height, className, ...other }) => {
     <div className={classes} {...other} style={{ height: `${height ? height : 500}px` }}>
       {/* Object Looping */}
       {/* <pre>{JSON.stringify(items, null, 2)}</pre> */}
-      {items.map((item, i) => {
-        const diff = getDiff(item.id, item.value)
+      {items.length > 0 &&
+        items.map((item, i) => {
+          const diff = getDiff(parseInt(i + 1), item.value)
 
-        return (
-          <React.Fragment key={`bar-${i}`}>
-            <VerticalBarChart
-              label={item.label}
-              item={item}
-              barValue={item.value}
-              type={item.type}
-              adjList={item.adjList}
-            />
+          return (
+            <React.Fragment key={`bar-${i}`}>
+              <VerticalBarChart
+                label={item.label}
+                item={item}
+                barValue={item.value}
+                type={item.type}
+                adjList={item.adjList}
+              />
 
-            {diff != null && <DiffIndicator diffValue={diff} />}
-          </React.Fragment>
-        )
-      })}
+              {diff != null && <DiffIndicator diffValue={parseInt(diff)} />}
+            </React.Fragment>
+          )
+        })}
     </div>
   )
 }
 
 // Validate prop types
 DropOutGraph.propTypes = {
+  rootNode: PropTypes.object,
   /** - Json Data */
   jsonData: PropTypes.object,
   /** - Chart Height */
